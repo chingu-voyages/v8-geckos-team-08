@@ -13,8 +13,5 @@
     "48": "logo-small.png",
     "128": "logo-small.png"
   },
-  "chrome_url_overrides": {
-    "newtab": "index.html"
-  },
   "permissions": ["storage"]
 }
