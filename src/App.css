@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.practice-styles {
+  background-color: hsla(0, 100%, 50%, 0.3);
+  color: white;
+  width: 200px;
+  height: 200px;
+  padding-top: 20px;
+}
+
+.header {
+  padding: 10px 0;
+  border: 1px solid white;
+  width: 70%;
+  margin: 0 auto;
+  box-shadow:5px 5px 15px hsla(0, 100%, 30%, 0.3);;
+}
