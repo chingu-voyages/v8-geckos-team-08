@@ -12,11 +12,19 @@ class App extends Component {
 
   componentDidMount = () => {
 		if (chrome.storage) {
-			chrome.storage.sync.get(['timers'], (items) => {
-				alert('timers retrieved!');
-				this.setState({
-					timers: items.timers.map(timer => timer)
-				})
+			chrome.storage.sync.get(['timers', 'idCounter'], (items) => {
+        alert('timers retrieved!');
+        console.log(items)
+        if (items.idCounter) {
+          this.setState({
+            timers: items.timers.map(timer => timer),
+            idCounter: items.idCounter
+          })
+        } else {
+          this.setState({
+            timers: items.timers.map(timer => timer),
+          })
+        }
 			});
 		}
   }
@@ -25,24 +33,33 @@ class App extends Component {
   // then passes on timers to TimersContainer to render
   // chrome.storage is used for actual extension, using this.state.timers to style in localhost
   addNewTimer = (title, type, time) => {
+    console.log(this.state.idCounter)
+
+    let id = this.state.idCounter !== 1 ? this.state.idCounter : 1
     let newTimer = {
-      'id': this.state.idCounter,
+      'id': id,
       'title': title, 
       'type': type,
       'time': time,
     }
+
     this.setState({
       timers: [...this.state.timers, newTimer],
       idCounter: this.state.idCounter + 1,
     })
-
+    console.log('b4 chrome', id)
     if (chrome.storage) {
-      chrome.storage.sync.set({'timers': [...this.state.timers, newTimer]}, () => {
+      chrome.storage.sync.set({
+        'timers': [...this.state.timers, newTimer],
+        'idCounter': id
+      }, () => {
         alert('timer saved!to chrome storage' );
       });
     } else {
       alert('timer not saved to chrome storage');
     }
+
+
   }
 
   removeTimer = (id) => {
@@ -59,7 +76,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App practice-styles">
         <div className="header">Reminder App</div>
