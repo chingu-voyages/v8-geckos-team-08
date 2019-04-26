@@ -8,12 +8,13 @@ export default class TimersContainer extends Component {
 		if (this.props.timers.length > 0) {
 			return (
 				this.props.timers.map(timer => 
-					<div>
+					<div key={timer.id}>
 						<IndividualTimer 
 							title={timer.title}
 							type={timer.type}
 							time={timer.time}
 						/>
+						<button onClick={()=>this.props.removeTimer(timer.id)}>delete me</button>
 					</div>
 				)
 			)

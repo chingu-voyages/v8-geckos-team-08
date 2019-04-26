@@ -45,13 +45,26 @@ class App extends Component {
     }
   }
 
+  removeTimer = (id) => {
+    const { timers } = this.state;
+    let updatedTimers = timers.filter(timer => timer.id !== id);
+    if (chrome.storage) {
+      chrome.storage.sync.set({'timers': updatedTimers}, () => {
+        alert('timers updated!to chrome storage' );
+      })
+    } 
+    this.setState({
+      timers: updatedTimers
+    })
+  }
+
   render() {
-    console.log(this.state.timers)
+
     return (
       <div className="App practice-styles">
         <div className="header">Reminder App</div>
         <AddReminder addNewTimer={this.addNewTimer} />
-        <TimersContainer timers={this.state.timers} />
+        <TimersContainer timers={this.state.timers} removeTimer={this.removeTimer} />
       </div>
     );
   }
