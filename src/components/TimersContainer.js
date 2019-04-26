@@ -8,7 +8,7 @@ export default class TimersContainer extends Component {
 		if (this.props.timers.length > 0) {
 			return (
 				this.props.timers.map(timer => 
-					<div key={timer.id}>
+					<div className='timer-tile' key={timer.id}>
 						<IndividualTimer 
 							title={timer.title}
 							type={timer.type}
