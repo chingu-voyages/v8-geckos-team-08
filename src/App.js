@@ -10,6 +10,17 @@ class App extends Component {
     idCounter: 1,
   }
 
+  componentDidMount = () => {
+		if (chrome.storage) {
+			chrome.storage.sync.get(['timers'], (items) => {
+				alert('timers retrieved!');
+				this.setState({
+					timers: items.timers.map(timer => timer)
+				})
+			});
+		}
+  }
+
   // addNewTimer is called in & gets its data from AddReminder, adds timers to the App state & chrome.storage,  
   // then passes on timers to TimersContainer to render
   // chrome.storage is used for actual extension, using this.state.timers to style in localhost
@@ -35,6 +46,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.timers)
     return (
       <div className="App practice-styles">
         <div className="header">Reminder App</div>
