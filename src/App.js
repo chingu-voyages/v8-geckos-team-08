@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import AddReminder from './components/AddReminder';
 import TimersContainer from './components/TimersContainer';
+import './stylesheets/timerTileComponent.css';
+import './stylesheets/buttons.css';
+import './stylesheets/forms.css'; 
+import './stylesheets/fonts.css';
+
 
 class App extends Component {
   state = {
@@ -25,7 +30,7 @@ class App extends Component {
     let id = this.state.idCounter !== 1 ? this.state.idCounter : 1
     let newTimer = {
       'id': id,
-      'title': title, 
+      'title': title,
       'type': type,
       'time': time,
     }
@@ -53,12 +58,12 @@ class App extends Component {
 
     localStorage.setItem("timers", JSON.stringify(updatedTimers));
   }
- 
-  
+
+
   render() {
     return (
       <div className="App practice-styles">
-        <div className="header">Reminder App</div>
+        <div className="header">Remind Me</div>
         <AddReminder addNewTimer={this.addNewTimer} />
         <TimersContainer timers={this.state.timers} removeTimer={this.removeTimer} />
       </div>

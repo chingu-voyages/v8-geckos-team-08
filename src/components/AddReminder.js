@@ -6,7 +6,7 @@ class AddReminder extends Component{
         this.state = {
             adding: false,
             title: "",
-            type: "cycle", 
+            type: "cycle",
             time: "15"
         }
         this.toggleForm = this.toggleForm.bind(this)
@@ -34,15 +34,15 @@ class AddReminder extends Component{
         // console.log(title, type, time);
         if (title.length === 0) {
             alert('Please enter a timer title!');
-            
+
         } else {
             this.props.addNewTimer(title, type, time);
             this.toggleForm()
             this.setState({
                 title: "",
-                type: "cycle", 
+                type: "cycle",
                 time: "15"
-            }) 
+            })
         }
     }
 
@@ -53,27 +53,25 @@ class AddReminder extends Component{
         return(
             <div className="reminder_set">
                 <button className="reminder_button reminder_add" onClick={this.toggleForm}>{displayText}</button>
-                <form 
-                    className="reminder_form" 
-                    style={{"display": displayToggle, 
-                            "position": positionToggle, 
-                            "top": 100, 
-                            "backgroundColor": "#d8d8d8",
-                            "width": "100%",
+                <form
+                    className="reminder_form"
+                    style={{"display": displayToggle,
+                            "position": positionToggle,
+                            "top": 100,
                         }}
                 >
-                    <p> Reminder Title: 
-                        <input 
-                            type="text" 
+                    <p> Reminder Title:
+                        <input
+                            type="text"
                             placeholder="Reminder Title"
                             onChange={(event) => this.handleChange(event, 'title')}
                             value={this.state.title}
                         >
                         </input>
                     </p>
-                    <p> Reminder Type: 
-                        <select 
-                            name="reminder_type" 
+                    <p> Reminder Type:
+                        <select
+                            name="reminder_type"
                             onChange={(event) => this.handleChange(event, 'type')}
                             value={this.state.type}
                         >
@@ -81,8 +79,8 @@ class AddReminder extends Component{
                             <option value="once">Once</option>
                         </select>
                     </p>
-                    <p> Select time: 
-                        <select 
+                    <p> Select time:
+                        <select
                             name="reminder_type"
                             onChange={(event) => this.handleChange(event, 'time')}
                             value={this.state.time}

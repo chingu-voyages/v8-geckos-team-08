@@ -3,3 +3,12 @@
 	padding: 15px;
 	margin: 5px 5px;
 }
+
+.timers-container {
+	background-color: rgb(255,190,187);
+}
+
+.no-timers {
+	color: #fff;
+	letter-spacing: .15em;
+}

@@ -1,0 +1,24 @@
+.reminder_button{
+  width: 55%;
+  padding: 10px 0;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 12px;
+  background-color: rgb(255,190,187);
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-top: 5px;
+  box-shadow:5px 5px 15px hsla(0, 100%, 30%, 0.3);
+  position: relative;
+}
+
+.reminder_button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.reminder_button:active, .reminder_button:focus {
+  outline: 0;
+  -moz-outline-style: none;
+}
