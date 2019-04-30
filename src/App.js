@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import AddReminder from './components/AddReminder';
 import TimersContainer from './components/TimersContainer';
-/* global chrome */
 
 class App extends Component {
   state = {
@@ -11,27 +10,17 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-		if (chrome.storage) {
-			chrome.storage.sync.get(['timers', 'idCounter'], (items) => {
-        alert('timers retrieved!');
-        if (items.idCounter) {
-          this.setState({
-            timers: items.timers.map(timer => timer),
-            idCounter: items.idCounter
-          })
-        } else {
-          this.setState({
-            timers: items.timers.map(timer => timer),
-          })
-        }
-			});
-		}
+    let timersFromStorage = JSON.parse(localStorage.getItem("timers"));
+    let counterFromStorage = JSON.parse(localStorage.getItem("counter"));
+
+    if (timersFromStorage) {
+      this.setState({
+        timers: timersFromStorage,
+        idCounter: counterFromStorage,
+      })
+    }
   }
 
-  // addNewTimer is called in & gets its data from AddReminder, 
-  // it adds timers to the App state & chrome.storage,  
-  // then timers are passed on to TimersContainer to render
-  // chrome.storage is used for actual extension, using this.state.timers to style in localhost
   addNewTimer = (title, type, time) => {
     let id = this.state.idCounter !== 1 ? this.state.idCounter : 1
     let newTimer = {
@@ -41,37 +30,31 @@ class App extends Component {
       'time': time,
     }
 
+    const updatedTimers = [...this.state.timers, newTimer];
+    const updatedCounter = this.state.idCounter + 1;
+
     this.setState({
-      timers: [...this.state.timers, newTimer],
-      idCounter: this.state.idCounter + 1,
+      timers: updatedTimers,
+      idCounter: updatedCounter,
     })
 
-    if (chrome.storage) {
-      chrome.storage.sync.set({
-        'timers': [...this.state.timers, newTimer],
-        'idCounter': id
-      }, () => {
-        alert('timer saved!to chrome storage' );
-      });
-    } else {
-      alert('timer not saved to chrome storage');
-    }
+    localStorage.setItem("timers", JSON.stringify(updatedTimers));
+    localStorage.setItem("counter", JSON.stringify(updatedCounter));
   }
 
   //removes entire individual timer from the list of timers
   removeTimer = (id) => {
     const { timers } = this.state;
     let updatedTimers = timers.filter(timer => timer.id !== id);
-    if (chrome.storage) {
-      chrome.storage.sync.set({'timers': updatedTimers}, () => {
-        alert('timers updated!to chrome storage' );
-      })
-    } 
+
     this.setState({
       timers: updatedTimers
     })
-  }
 
+    localStorage.setItem("timers", JSON.stringify(updatedTimers));
+  }
+ 
+  
   render() {
     return (
       <div className="App practice-styles">

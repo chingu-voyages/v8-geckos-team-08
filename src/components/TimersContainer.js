@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import IndividualTimer from './TimerTileComponent';
 
 export default class TimersContainer extends Component {
-	// if timers, maps thru and renders each timer
+
 	renderTimers = () => {
 		if (this.props.timers.length > 0) {
 			return (
@@ -12,6 +12,7 @@ export default class TimersContainer extends Component {
 							title={timer.title}
 							type={timer.type}
 							time={timer.time}
+							id={timer.id}
 						/>
 						<button onClick={()=>this.props.removeTimer(timer.id)}>delete me{timer.id}</button>
 					</div>
