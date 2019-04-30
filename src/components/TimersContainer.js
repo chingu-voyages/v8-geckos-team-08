@@ -20,7 +20,7 @@ export default class TimersContainer extends Component {
 			)
 		} else {
 			return (
-				<div>no timers :(</div>
+				<div>no timers :( :(</div>
 			)
 		}
 	}
