@@ -6,9 +6,9 @@ export default class TimersContainer extends Component {
 	renderTimers = () => {
 		if (this.props.timers.length > 0) {
 			return (
-				this.props.timers.map(timer => 
+				this.props.timers.map(timer =>
 					<div className='timer-tile' key={timer.id}>
-						<IndividualTimer 
+						<IndividualTimer
 							title={timer.title}
 							type={timer.type}
 							time={timer.time}
@@ -20,7 +20,7 @@ export default class TimersContainer extends Component {
 			)
 		} else {
 			return (
-				<div>no timers :( :(</div>
+				<div className="no-timers">You don't have any timers yet!</div>
 			)
 		}
 	}
