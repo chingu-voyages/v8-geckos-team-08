@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import '../stylesheets/timerTileComponent.css';
 
 export default class TimerTileComponent extends Component {
-	
+
 	componentDidMount = () => {
 		this.countdown(this.props.time * 60);
 	}
-	
+
 	 countdown = (seconds) => {
 		 let timerId, timerTitle;
 		 if (this.props) {
@@ -14,18 +13,19 @@ export default class TimerTileComponent extends Component {
 			timerTitle = this.props.title;
 		 }
 		seconds = parseInt(sessionStorage.getItem(`${timerId}-seconds`))||seconds;
-	
+
 		function tick() {
-			seconds--; 
+			seconds--;
 			sessionStorage.setItem(`${timerId}-seconds`, seconds)
 			let counter = document.getElementById(`${timerId}-timer`);
 			let current_minutes = parseInt(seconds/60);
 			let current_seconds = seconds % 60;
-			counter.innerHTML = current_minutes + ":" + (current_seconds < 10 ? "0" : "") + current_seconds;
+			if (counter) {
+				counter.innerHTML = current_minutes + ":" + (current_seconds < 10 ? "0" : "") + current_seconds;
+			}
+
 			if( seconds > 0 ) {
 				setTimeout(tick, 1000);
-			} else {
-				alert(timerTitle)
 			}
 		}
 		tick();
