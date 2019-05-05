@@ -11,7 +11,7 @@ export default class TimerTileComponent extends Component {
 		if (this.props) {
 			timerId = this.props.id;
 			timerTitle = this.props.title;
-		 }
+		}
 		seconds = parseInt(sessionStorage.getItem(`${timerId}-seconds`)) || seconds;
 
 		function tick() {
@@ -24,7 +24,7 @@ export default class TimerTileComponent extends Component {
 				counter.innerHTML = current_minutes + ":" + (current_seconds < 10 ? "0" : "") + current_seconds;
 			}
 
-			if( seconds > 0 ) {
+			if (seconds > 0) {
 				setTimeout(tick, 1000);
 			}
 		}
