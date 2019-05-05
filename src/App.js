@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import AddReminder from './components/AddReminder';
 import TimersContainer from './components/TimersContainer';
-import './stylesheets/timerTileComponent.css';
-import './stylesheets/buttons.css';
-import './stylesheets/forms.css'; 
-import './stylesheets/fonts.css';
+import './stylesheets/timerTileComponent.scss';
+import './stylesheets/buttons.scss';
+import './stylesheets/forms.scss';
+import './stylesheets/fonts.scss';
 
 
 class App extends Component {
