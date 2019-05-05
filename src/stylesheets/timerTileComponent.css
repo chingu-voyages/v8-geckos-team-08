@@ -1,14 +1,54 @@
+.timer-tile {
+	background: white;
+	padding: 10px 15px;
+	margin-bottom: 15px;
+	border-radius: 8px;
+}
 .timer-tile-container {
-	background-color: gray;
-	padding: 15px;
-	margin: 5px 5px;
+	background-color: white;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 15px;
 }
-
+.timer-information {
+	width: 60%;
+}
+.timer-information .title {
+	font-size: 1.25em;
+	line-height: 1.3;
+	text-align: left;
+	margin-bottom: 7px;
+}
+.timer-information .details {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	line-height: 1.15;
+	font-size: 0.75em;
+	text-align: left;
+}
+.timer-countdown {
+	width: 40%;
+}
+.timer-countdown div {
+	font-size: 1.85em;
+	text-align: right;
+}
 .timers-container {
-	background-color: rgb(255,190,187);
+	background-color: rgb(255, 190, 187);
 }
-
 .no-timers {
 	color: #fff;
-	letter-spacing: .15em;
+	letter-spacing: 0.15em;
+}
+.timer-removeButton {
+	width: 55%;
+	padding: 10px 0;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-size: 12px;
+	background-color: rgb(255, 117, 110);
+	border: none;
+	cursor: pointer;
+	border-radius: 30px;
 }
