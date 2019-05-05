@@ -13,5 +13,5 @@
     "48": "logo-small.png",
     "128": "logo-small.png"
   },
-  "permissions": ["storage"]
+  "permissions": ["storage", "alarms", "notifications","http://localhost/*"]
 }

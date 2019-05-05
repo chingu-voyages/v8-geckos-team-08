@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import IndividualTimer from './TimerTileComponent';
 
 export default class TimersContainer extends Component {
-
+	
 	renderTimers = () => {
 		if (this.props.timers.length > 0) {
 			return (
-				this.props.timers.map(timer =>
+				this.props.timers.map(timer => 
 					<div className='timer-tile' key={timer.id}>
 						<IndividualTimer
 							title={timer.title}
@@ -14,13 +14,13 @@ export default class TimersContainer extends Component {
 							time={timer.time}
 							id={timer.id}
 						/>
-						<button onClick={()=>this.props.removeTimer(timer.id)}>delete me{timer.id}</button>
+						<button className='timer-removeButton' onClick={() => this.props.removeTimer(timer.id)} value={timer.id}>delete me</button>
 					</div>
 				)
 			)
 		} else {
 			return (
-				<div className="no-timers">You don't have any timers yet!</div>
+				<div className='no-timers'>You don't have any timers yet!</div>
 			)
 		}
 	}
