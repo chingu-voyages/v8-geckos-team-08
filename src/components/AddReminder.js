@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 
 class AddReminder extends Component{
-    constructor (){
-        super()
-        this.state = {
-            adding: false,
-            title: "",
-            type: "cycle",
-            time: "15"
-        }
-        this.toggleForm = this.toggleForm.bind(this)
+
+    state = {
+        adding: false,
+        title: "",
+        type: "cycle",
+        time: "15"
     }
 
-    toggleForm(){
-        this.setState(previousState => ({
-            adding: !previousState.adding
-        }))
+    componentDidUpdate = (prevProps) => {
+      if (prevProps !== this.props) {
+        this.setState({
+          adding: this.props.adding,
+        })
+      }
     }
 
     // keeps track of input changes and stores them in state, to submit later
@@ -37,7 +36,7 @@ class AddReminder extends Component{
 
         } else {
             this.props.addNewTimer(title, type, time);
-            this.toggleForm()
+            this.props.toggleForm()
             this.setState({
                 title: "",
                 type: "cycle",
@@ -50,9 +49,12 @@ class AddReminder extends Component{
         let displayToggle = (this.state.adding) ? "block" : "none"
         let positionToggle = (this.state.adding) ? "absolute" : "none"
         let displayText = (this.state.adding)? "Close" : "Add Reminder"
+        console.log('state', this.state.adding)
+        console.log('props', this.props.adding)
         return(
             <div className="reminder_set">
-                <button className="reminder_button reminder_add" onClick={this.toggleForm}>{displayText}</button>
+                <button
+                  className="reminder_button reminder_add" onClick={this.props.toggleForm}>{displayText}</button>
                 <form
                     className="reminder_form"
                     style={{"display": displayToggle,

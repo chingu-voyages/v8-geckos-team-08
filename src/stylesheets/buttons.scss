@@ -1,24 +1,76 @@
+@import 'variables.scss';
+
+
 .reminder_button{
   width: 55%;
   padding: 10px 0;
-  color: #fff;
+  color: $blue;
   text-transform: uppercase;
   letter-spacing: .1em;
   font-size: 12px;
-  background-color: rgb(255,190,187);
-  border: 1px solid white;
+  background-color: $cream;
+  border: none;
   cursor: pointer;
   border-radius: 30px;
   margin-top: 5px;
-  box-shadow:5px 5px 15px hsla(0, 100%, 30%, 0.3);
+  box-shadow: 0 8px 12px 0 $box-shadow;
   position: relative;
+
+  &:hover {
+    box-shadow: $hover-effect;
+  }
+
+  &:active, &:focus {
+    outline: 0;
+    -moz-outline-style: none;
+  }
 }
 
-.reminder_button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+.timer-edits {
+  position: absolute;
+  padding: 3px 0;
+  font-weight: bold;
+  color: $cream;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  background-color: $blue;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0 12px 16px 0 $box-shadow;
+  width: 8%;
+  bottom: 10%;
+
+
+  &:hover {
+    box-shadow: $hover-effect;
+
+    .hover-text {
+      display: block;
+      position: absolute;
+      width: 50px;
+      color: $cream;
+      background-color: rgba(5, 56, 107, 0.71);
+      text-align: center;
+      font-size: 7px;
+      font-weight: normal;
+      padding: 3px;
+      border-radius: 10px;
+      margin-top: 7px;
+      left: -6px;
+    }
+  }
+
+  .hover-text {
+    display: none;
+  }
 }
 
-.reminder_button:active, .reminder_button:focus {
-  outline: 0;
-  -moz-outline-style: none;
+.delete-timer {
+	right: 6%;
+}
+
+.edit-timer {
+  right: 16%;
 }

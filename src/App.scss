@@ -1,3 +1,6 @@
+@import 'stylesheets/variables.scss';
+
+
 .App {
   text-align: center;
 }
@@ -16,8 +19,8 @@
   }
 }
 
-.practice-styles {
-  background-color: hsla(0, 100%, 50%, 0.3);
+.main-container {
+  background-color: $green;
   width: 300px;
   height: 400px;
   padding-top: 10px;
@@ -26,13 +29,14 @@
 
 .header {
   padding: 10px 0;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid $cream;
   width: 70%;
   margin: 0 auto;
-  color: #fff;
+  color: $cream;
   font-size: 24px;
   letter-spacing: .2em;
   padding: 5px;
+  font-weight: bold;
 }
 
 .reminder_set {
@@ -46,10 +50,11 @@
 
 .reminder_set .reminder_save {
   margin: 0 15%;
+  z-index: 10;
 }
 
 .timers-container {
-	background-color: white;
+	background-color: $cream;
 	padding: 15px;
   margin: 5px 5px;
   height: 60%;

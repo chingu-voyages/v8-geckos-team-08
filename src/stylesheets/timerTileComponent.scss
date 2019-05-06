@@ -1,11 +1,15 @@
+@import 'variables.scss';
+
+
 .timer-tile {
-	background: white;
+	background: $cream;
 	padding: 10px 15px;
 	margin-bottom: 15px;
 	border-radius: 8px;
+	position: relative;
 }
 .timer-tile-container {
-	background-color: white;
+	background-color: $cream;
 	display: flex;
 	flex-direction: row;
 	margin-bottom: 15px;
@@ -34,21 +38,9 @@
 	text-align: right;
 }
 .timers-container {
-	background-color: rgb(255, 190, 187);
+	background-color: $green;
 }
 .no-timers {
-	color: #fff;
+	color: $cream;
 	letter-spacing: 0.15em;
-}
-.timer-removeButton {
-	width: 55%;
-	padding: 10px 0;
-	color: #fff;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	font-size: 12px;
-	background-color: rgb(255, 117, 110);
-	border: none;
-	cursor: pointer;
-	border-radius: 30px;
 }

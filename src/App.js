@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import AddReminder from './components/AddReminder';
 import TimersContainer from './components/TimersContainer';
+import './stylesheets/variables.scss';
 import './stylesheets/timerTileComponent.scss';
 import './stylesheets/buttons.scss';
 import './stylesheets/forms.scss';
@@ -10,6 +11,7 @@ import './stylesheets/fonts.scss';
 
 class App extends Component {
   state = {
+    adding: false,
     timers: [],
     idCounter: 1,
   }
@@ -60,12 +62,36 @@ class App extends Component {
   }
 
 
+  // editTimer = (id) => {
+  //   const { timers } = this.state;
+  //   let currentTimer = timers.filter(timer => timer.id === id);
+  //
+  //   this.setState({
+  //     timers: updatedTimers
+  //   })
+  //
+  //   localStorage.setItem("timers", JSON.stringify(updatedTimers));
+  // }
+
+  toggleForm = () => {
+    this.setState({
+      adding: !this.state.adding
+    })
+  }
+
+
   render() {
     return (
-      <div className="App practice-styles">
+      <div className="App main-container">
         <div className="header">Remind Me</div>
-        <AddReminder addNewTimer={this.addNewTimer} />
-        <TimersContainer timers={this.state.timers} removeTimer={this.removeTimer} />
+        <AddReminder
+          adding={this.state.adding}
+          toggleForm={this.toggleForm}
+          addNewTimer={this.addNewTimer} />
+        <TimersContainer
+          timers={this.state.timers}
+          removeTimer={this.removeTimer}
+          toggleForm={this.toggleForm}  />
       </div>
     );
   }
