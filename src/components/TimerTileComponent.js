@@ -14,7 +14,7 @@ export default class TimerTileComponent extends Component {
 		}
 		seconds = parseInt(sessionStorage.getItem(`${timerId}-seconds`)) || seconds;
 
-		function tick() {
+		const tick = () => {
 			seconds--;
 			sessionStorage.setItem(`${timerId}-seconds`, seconds)
 			let counter = document.getElementById(`${timerId}-timer`);
@@ -24,14 +24,19 @@ export default class TimerTileComponent extends Component {
 				counter.innerHTML = current_minutes + ":" + (current_seconds < 10 ? "0" : "") + current_seconds;
 			}
 
-			if (seconds > 0) {
+			if (seconds > 0){
 				setTimeout(tick, 1000);
+			} else {
+				alert (`Don't forget: ${timerTitle}!`);
+				this.props.removeTimer(timerId)
 			}
 		}
 		tick();
 	}
 
 	render() {
+		console.log(this.props.removeTimer)
+
 		const { title, type, time, id } = this.props;
 
 		return (

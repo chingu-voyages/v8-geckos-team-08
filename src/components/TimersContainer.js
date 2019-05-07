@@ -13,20 +13,14 @@ export default class TimersContainer extends Component {
 							type={timer.type}
 							time={timer.time}
 							id={timer.id}
+							removeTimer={this.props.removeTimer}
 						/>
-
-					<button
-						className='edit-timer timer-edits'
-						onClick={() => this.props.toggleForm(timer.id)} value={timer.id}>
-							E
-						<span class="hover-text">Edit</span>
-					</button>
-					<button
-						className='delete-timer timer-edits'
-						onClick={() => this.props.removeTimer(timer.id)} value={timer.id}>
-							X
-						<span class="hover-text">Delete</span>
-					</button>
+						<button
+							className='delete-timer timer-edits'
+							onClick={() => this.props.removeTimer(timer.id)} value={timer.id}>
+								X
+							<span class="hover-text">Delete</span>
+						</button>
 					</div>
 				)
 			)

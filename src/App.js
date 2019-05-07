@@ -62,22 +62,22 @@ class App extends Component {
   }
 
 
-  // editTimer = (id) => {
-  //   const { timers } = this.state;
-  //   let currentTimer = timers.filter(timer => timer.id === id);
-  //
-  //   this.setState({
-  //     timers: updatedTimers
-  //   })
-  //
-  //   localStorage.setItem("timers", JSON.stringify(updatedTimers));
-  // }
-
   toggleForm = () => {
     this.setState({
       adding: !this.state.adding
     })
   }
+
+  // editForm = (id) => {
+  //   this.setState({
+  //     adding: !this.state.adding
+  //   })
+  //   const { timers } = this.state;
+  //   let thisTimer = timers.filter(timer => timer.id === id)
+  //
+  //
+  //   console.log(thisTimer)
+  // }
 
 
   render() {
@@ -91,7 +91,8 @@ class App extends Component {
         <TimersContainer
           timers={this.state.timers}
           removeTimer={this.removeTimer}
-          toggleForm={this.toggleForm}  />
+          toggleForm={this.toggleForm}
+          editForm={this.editForm}  />
       </div>
     );
   }

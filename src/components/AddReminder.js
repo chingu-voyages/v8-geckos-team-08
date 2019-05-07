@@ -87,6 +87,7 @@ class AddReminder extends Component{
                             onChange={(event) => this.handleChange(event, 'time')}
                             value={this.state.time}
                         >
+                        <option value=".1">.1</option>
                             <option value="1">1</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
